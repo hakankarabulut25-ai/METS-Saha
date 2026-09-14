@@ -1,0 +1,9 @@
+METS Saha v0.5 - Uydu Altligi
+Tarih: 15.09.2026
+
+- Varsayilan harita altligi Esri World Imagery (uydu/arazi goruntusu) yapildi.
+- Harita sag ustunden Uydu / Harita (OpenStreetMap) gecisi eklendi.
+- Mahalle Toplu Harita ve tek parsel haritasinda ayni altlik secimi kullaniliyor.
+- KML parsel sinirlari ve tespit durum renkleri uydu goruntusunun ustunde korunuyor.
+- GPS konumu, en yakin tespit edilmemis parsel ve Parsele Git ozellikleri korunuyor.
+- Internet yoksa cevrimdisi KML krokisi davranisi korunuyor; uydu goruntusu internet gerektirir.
