@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f4f46">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="METS Saha">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="app.css">
+<title>METS Saha</title>
+</head>
+<body>
+<header>
+  <div><b>METS Saha</b><small>v0.2 · Çevrimdışı tespit</small></div>
+  <div class="head-actions"><span id="netBadge" class="net"></span><button id="installHelp">iPhone'a Ekle</button></div>
+</header>
+<main>
+<section id="home">
+  <div class="card hero">
+    <h1>Saha paketi</h1>
+    <p>Masaüstü METS'ten oluşturulan saha paketini yükleyin. Tespit verileri ve fotoğraflar bu cihazın yerel depolamasında tutulur.</p>
+    <label class="primary file">Saha Paketi Yükle<input id="packageInput" type="file" accept=".json,application/json"></label>
+    <button id="exportBtn" class="secondary">Saha Sonuçlarını Dışa Aktar</button>
+    <button id="backupBtn" class="ghost">Cihaz Yedeği Al</button>
+    <label class="ghost file">Cihaz Yedeğini Geri Yükle<input id="backupInput" type="file" accept=".json,application/json"></label>
+    <div id="pkgInfo" class="muted"></div>
+    <div id="storageInfo" class="muted"></div>
+  </div>
+  <div class="filters"><input id="search" placeholder="Mahalle, ada, parsel ara"><select id="status"><option value="all">Tümü</option><option value="draft">Taslak</option><option value="completed">Tamamlandı</option></select></div>
+  <div id="list"></div>
+  <div class="card danger-zone"><b>Bakım</b><p class="muted">Yeni telefona geçmeden veya uygulamayı kaldırmadan önce yedek alın.</p><button id="resetBtn" class="danger">Cihazdaki METS Saha Verisini Temizle</button></div>
+</section>
+<section id="editor" hidden>
+  <button id="back">‹ Listeye dön</button>
+  <div id="identity" class="card"></div>
+  <form id="form" class="card">
+    <label>Tespit sonucu<select name="tespitSonucu"><option value="">Seçiniz</option><option>Boş-kullanılmıyor</option><option>İşgalli</option><option>Kısmen işgalli</option><option>Kamu kullanımında</option><option>Sınır ihtilafı</option><option>Yerinde tespit edilemedi</option></select></label>
+    <label>Kullanım amacı<select name="kullanimAmaclari"><option value="">Seçiniz</option><option>Tarım</option><option>Konut</option><option>Ticaret</option><option>Depo</option><option>Bahçe</option><option>Hayvancılık</option><option>Otopark</option><option>Yol/Geçiş</option><option>Diğer</option></select></label>
+    <div class="grid"><label>Kullanım alanı (m²)<input name="kullanimAlani" inputmode="decimal"></label><label>Başlangıç tarihi<input name="baslangicTarihi" type="date"></label></div>
+    <label>Kullanıcı / fuzuli şagil<input name="kullaniciAdi"></label>
+    <label>T.C. / VKN<input name="kullaniciKimlik" inputmode="numeric"></label>
+    <label>Adres / iletişim<textarea name="kullaniciAdres"></textarea></label>
+    <label>Açıklama<textarea name="aciklama" rows="5"></textarea></label>
+    <div class="card inset"><b>Konum</b><p id="gpsText" class="muted">Henüz alınmadı.</p><button type="button" id="gpsBtn" class="secondary">GPS Konumunu Al</button></div>
+    <div class="card inset"><b>Fotoğraflar (en fazla 8)</b><label class="secondary file">Fotoğraf Çek / Seç<input id="photoInput" type="file" accept="image/*" capture="environment" multiple></label><div id="photos" class="photos"></div></div>
+    <div class="card inset"><b>İmza</b><canvas id="sig" width="700" height="240"></canvas><button type="button" id="clearSig" class="ghost">İmzayı Temizle</button></div>
+    <div class="sticky"><button type="button" id="saveDraft" class="secondary">Taslak Kaydet</button><button type="button" id="complete" class="primary">Tespiti Tamamla</button></div>
+  </form>
+</section>
+</main>
+<dialog id="help"><h3>iPhone'a ekleme</h3><p>Bu uygulama HTTPS üzerinden Safari'de açılmalıdır. Safari → Paylaş → <b>Ana Ekrana Ekle</b>. İlk açılıştan sonra uygulama çevrimdışı kullanılabilir.</p><p><b>Önemli:</b> Uygulamayı silmeden veya Safari site verilerini temizlemeden önce “Cihaz Yedeği Al” ile yedek oluşturun.</p><button id="closeHelp" class="primary">Tamam</button></dialog>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body></html>
