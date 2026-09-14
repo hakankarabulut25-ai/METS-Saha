@@ -9,12 +9,13 @@
 <meta name="apple-mobile-web-app-title" content="METS Saha">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <link rel="stylesheet" href="app.css">
 <title>METS Saha</title>
 </head>
 <body>
 <header>
-  <div><b>METS Saha</b><small>v0.2 · Çevrimdışı tespit</small></div>
+  <div><b>METS Saha</b><small>v0.3 · Parsel bulma + çevrimdışı tespit</small></div>
   <div class="head-actions"><span id="netBadge" class="net"></span><button id="installHelp">iPhone'a Ekle</button></div>
 </header>
 <main>
@@ -44,7 +45,14 @@
     <label>T.C. / VKN<input name="kullaniciKimlik" inputmode="numeric"></label>
     <label>Adres / iletişim<textarea name="kullaniciAdres"></textarea></label>
     <label>Açıklama<textarea name="aciklama" rows="5"></textarea></label>
-    <div class="card inset"><b>Konum</b><p id="gpsText" class="muted">Henüz alınmadı.</p><button type="button" id="gpsBtn" class="secondary">GPS Konumunu Al</button></div>
+    <div class="card inset map-card"><b>Parsel Haritası / Konum</b>
+      <p id="parcelStatus" class="parcel-status muted">Parsel bilgisi hazırlanıyor…</p>
+      <div id="parcelMap" class="parcel-map" aria-label="Parsel haritası"></div>
+      <div id="parcelFallback" class="parcel-fallback" hidden><svg id="parcelSvg" viewBox="0 0 360 260" role="img" aria-label="Parsel sınırı ve GPS konumu"></svg></div>
+      <p id="gpsText" class="muted">Henüz GPS konumu alınmadı.</p>
+      <div class="map-actions"><button type="button" id="gpsBtn" class="secondary">Konumumu Güncelle</button><button type="button" id="trackBtn" class="secondary">Canlı Takip Başlat</button><button type="button" id="navBtn" class="primary">Parsele Git</button></div>
+      <p class="muted map-note">Parsel sınırı masaüstü METS'teki KML geometrisinden çizilir. Altlık harita yalnız yön bulma amaçlıdır; konumsal doğruluk telefon GPS hassasiyeti ve KML verisine bağlıdır.</p>
+    </div>
     <div class="card inset"><b>Fotoğraflar (en fazla 8)</b><label class="secondary file">Fotoğraf Çek / Seç<input id="photoInput" type="file" accept="image/*" capture="environment" multiple></label><div id="photos" class="photos"></div></div>
     <div class="card inset"><b>İmza</b><canvas id="sig" width="700" height="240"></canvas><button type="button" id="clearSig" class="ghost">İmzayı Temizle</button></div>
     <div class="sticky"><button type="button" id="saveDraft" class="secondary">Taslak Kaydet</button><button type="button" id="complete" class="primary">Tespiti Tamamla</button></div>
@@ -53,5 +61,6 @@
 </main>
 <dialog id="help"><h3>iPhone'a ekleme</h3><p>Bu uygulama HTTPS üzerinden Safari'de açılmalıdır. Safari → Paylaş → <b>Ana Ekrana Ekle</b>. İlk açılıştan sonra uygulama çevrimdışı kullanılabilir.</p><p><b>Önemli:</b> Uygulamayı silmeden veya Safari site verilerini temizlemeden önce “Cihaz Yedeği Al” ile yedek oluşturun.</p><button id="closeHelp" class="primary">Tamam</button></dialog>
 <div id="toast"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="app.js"></script>
 </body></html>
