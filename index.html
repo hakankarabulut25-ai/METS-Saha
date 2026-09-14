@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-  <div><b>METS Saha</b><small>v0.3 · Parsel bulma + çevrimdışı tespit</small></div>
+  <div><b>METS Saha</b><small>v0.4 · Mahalle toplu harita + parsel bulma</small></div>
   <div class="head-actions"><span id="netBadge" class="net"></span><button id="installHelp">iPhone'a Ekle</button></div>
 </header>
 <main>
@@ -29,6 +29,16 @@
     <label class="ghost file">Cihaz Yedeğini Geri Yükle<input id="backupInput" type="file" accept=".json,application/json"></label>
     <div id="pkgInfo" class="muted"></div>
     <div id="storageInfo" class="muted"></div>
+  </div>
+  <div class="card neighborhood-card">
+    <div class="section-title-row"><div><h2>Mahalle Haritası</h2><p class="muted">Seçtiğiniz mahallede KML geometrisi bulunan bütün Hazine taşınmazlarını aynı haritada görün.</p></div><span id="neighborhoodCount" class="chip"></span></div>
+    <div class="neighborhood-filters"><label>İlçe<select id="districtSelect"></select></label><label>Mahalle<select id="neighborhoodSelect"></select></label></div>
+    <div class="legend" aria-label="Tespit durumu renk açıklaması"><span><i class="legend-dot todo"></i>Tespit edilmedi</span><span><i class="legend-dot draft"></i>Taslak</span><span><i class="legend-dot done"></i>Tamamlandı</span><span><i class="legend-dot review"></i>KML kontrol</span></div>
+    <p id="neighborhoodSummary" class="muted"></p>
+    <div id="neighborhoodMap" class="neighborhood-map" aria-label="Mahalledeki taşınmazların toplu haritası"></div>
+    <div id="neighborhoodFallback" class="neighborhood-fallback" hidden><svg id="neighborhoodSvg" viewBox="0 0 720 480" role="img" aria-label="Mahalle taşınmazları çevrimdışı krokisi"></svg></div>
+    <div class="neighborhood-actions"><button type="button" id="neighborhoodGpsBtn" class="secondary">Konumumu Göster</button><button type="button" id="nearestBtn" class="primary">En Yakın Tespit Edilmemiş Parsel</button></div>
+    <div id="nearestInfo" class="nearest-info muted"></div>
   </div>
   <div class="filters"><input id="search" placeholder="Mahalle, ada, parsel ara"><select id="status"><option value="all">Tümü</option><option value="draft">Taslak</option><option value="completed">Tamamlandı</option></select></div>
   <div id="list"></div>
