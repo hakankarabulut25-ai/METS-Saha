@@ -1,0 +1,12 @@
+METS Saha v0.17.1 — Kararlılık ve Buton Kontrolü
+
+Düzeltmeler:
+- Sürüm dosyaları cache-busting ile eşleştirildi (app.js/app.css ?v=0.17.1).
+- Service Worker çekirdek dosyalarda network-first ve sürüm bazlı atomik cache kullanıyor.
+- Eski sürüm cache'leri aktivasyonda temizleniyor.
+- IndexedDB açılamazsa uygulama başlatması tamamen durmuyor; yedek depolama yolu kullanılıyor.
+- Global JavaScript/runtime hataları ekranda görünür uyarı olarak gösteriliyor.
+- Cache sürüm uyuşmazlığında kritik listener bağlama zincirini kesen parcelFieldNote erişimi null-safe yapıldı.
+- Tam ekran harita ve kritik ana ekran düğmeleri statik + DOM etkileşim testi ile kontrol edildi.
+
+Not: GPS, kamera, pusula, titreşim ve iOS PWA davranışı fiziksel cihazda ayrıca kabul edilmelidir.

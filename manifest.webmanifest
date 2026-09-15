@@ -7,7 +7,7 @@
   "display": "standalone",
   "background_color": "#f5f7f8",
   "theme_color": "#1f4f46",
-  "description": "Milli Emlak saha tespitleri için QR yerel paket aktarımı, KML hazırlık merkezi, çevrimdışı mahalle hazırlığı, KML krokisi, saha asistanı, kamera yön görünümü, radar/pusula, akıllı rota, işgal alanı ölçümü ve geçmiş-değişim analizi.",
+  "description": "Milli Emlak saha tespitleri için QR yerel paket aktarımı, KML hazırlık merkezi, çevrimdışı mahalle hazırlığı, KML krokisi, saha asistanı, kamera yön görünümü, radar/pusula, akıllı rota, işgal alanı ölçümü ve geçmiş-değişim analizi. Kararlılık sürümü 0.17.1.",
   "icons": [
     {
       "src": "icon-192.png",
