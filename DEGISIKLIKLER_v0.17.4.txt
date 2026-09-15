@@ -1,0 +1,7 @@
+METS Saha v0.17.4 – Tam Kullanıcı Testi + Kararlılık
+
+- Canlı Saha HUD çubuğu tespit formu açıkken gizlenir; Kaydet/Tamamla ve alt form düğmelerini kapatmaz.
+- Tam ekran harita, normal listeden tespit açma, kamera aç/kapat ve kamera içinden tespit açma akışları yeniden kullanıcı senaryosu olarak denetlendi.
+- KML hazırlık, GPS/radar, akıllı rota, fotoğraf, taslak, dışa aktarma ve yardım akışları regresyon testine alındı.
+- Cache/sürüm 0.17.4.
+- Bildirim (toast) katmanı artık dokunmaları engellemez; alt Kaydet/Tamamla gibi düğmeler toast görünürken de çalışır.

@@ -1,0 +1,24 @@
+METS Saha v0.17.2 – Kararlılık Düzeltmesi Test Raporu
+Tarih: 15.09.2026
+
+DÜZELTİLEN HATALAR
+1) iOS Safari: ReferenceError: Can't find variable: haversine
+   - Gün planı, yakın taşınmazlar ve süre tahmini hesapları haversineMeters() üzerinde birleştirildi.
+   - Geriye uyumluluk için haversine() takma adı eklendi.
+
+2) Eksik nearestIncomplete() yardımcı fonksiyonu
+   - Tam ekran canlı bilgi, En Yakın Tespit Edilmemiş Parsel ve tespit sonrası sıradaki hedef akışlarında kullanılan fonksiyon eklendi.
+   - Mesafe parsel merkezine değil KML sınırına göre hesaplanıyor.
+
+YAPILAN KONTROLLER
+- node --check app.js: GEÇTİ
+- HTML ID sayısı: 161 / mükerrer: 0
+- Statik #id referans kontrolü: yalnız çalışma sırasında dinamik oluşturulan completionCheckBtn ve resumeLastBtn HTML'de sabit değil; beklenen davranış.
+- Haversine matematik doğrulaması: 0.001° enlem farkı ≈ 111.195 m: GEÇTİ
+- haversine() -> haversineMeters() uyumluluk testi: GEÇTİ
+- nearestIncomplete() gerçek 104 taşınmazlık saha paketi üzerinde, KML geometrili mahallede çalıştırıldı: GEÇTİ
+- Kaynakta yanlış/çıplak haversine() çağrısı taraması: yalnız uyumluluk takma adı kaldı.
+- APP_VERSION / index / service worker/cache sürümü: 0.17.2 ile eşleştirildi.
+
+NOT
+Fiziksel iPhone/Safari GPS, kamera, pusula ve PWA önbellek davranışı son kabul testidir. GitHub güncellemesinden sonra Safari'de site bir kez açılıp yenilenmeli; ardından ana ekran uygulaması tamamen kapatılıp yeniden açılmalıdır.

@@ -1,0 +1,84 @@
+METS Saha v0.17.4 – TAM KULLANICI / REGRESYON TEST RAPORU
+Tarih: 15.09.2026
+
+TEST YAKLAŞIMI
+- 390x844 mobil ekran ve dokunmatik emülasyon ile kullanıcı akışı test edildi.
+- Gerçek saha paketi kullanıldı: 104 taşınmaz; başlangıçta 60 KML'li, 44 KML'siz, 1 KML kontrol kaydı.
+- GPS, pusula, kamera ve Leaflet davranışları test ortamında kontrollü olarak taklit edildi.
+- KML içe aktarma, JSON dışa aktarma/yedek, fotoğraf ve saha formu akışları gerçek dosyalarla çalıştırıldı.
+- Bu test fiziksel iPhone/Safari'nin yerini tamamen tutmaz; iPhone'da son kabul testi yine yapılmalıdır.
+
+STATİK KONTROLLER
+[GEÇTİ] app.js JavaScript sözdizimi.
+[GEÇTİ] 161 HTML kimliği benzersiz; mükerrer ID yok.
+[GEÇTİ] 62 buton; ID'li 53 butonun tamamı uygulama kodunda bağlı.
+[GEÇTİ] 5 dosya girişi (saha paketi, yedek, toplu KML, tekil KML, fotoğraf) bağlı.
+[GEÇTİ] index/app/service-worker sürümü 0.17.4 tutarlı.
+[GEÇTİ] Service Worker çekirdek dosyaları mevcut.
+
+KULLANICI AKIŞLARI
+[GEÇTİ] 104 taşınmaz saha paketi yükleme.
+[GEÇTİ] İlçe/mahalle seçimi ve mahalle sayımları.
+[GEÇTİ] Normal listeden tespit açma.
+[GEÇTİ] Tam ekran harita aç/kapat.
+[GEÇTİ] Tam ekranda konum, en yakın parsel ve ada/parsel etiketi.
+[GEÇTİ] Harita popup içindeki “Tespiti Aç”.
+[GEÇTİ] Tam ekrandan Radar'a geçiş.
+[GEÇTİ] Radar/Pusula ve “Sıradaki Parsele Git”.
+[GEÇTİ] “Baktığım Yer” yön görünümü.
+[GEÇTİ] Kamera Yön Görüşü aç/kapat.
+[GEÇTİ] Kamera hedef etiketi ve “Seçili Parseli Aç”.
+[GEÇTİ] Kamera “Parsele Git”.
+[GEÇTİ] Kamera içinden tespit açıldığında kamera akışının kapanması.
+[GEÇTİ] Canlı Saha başlatma, sıradaki hedef, HUD Aç/Sonraki/Kapat.
+[GEÇTİ] Canlı Saha hedefinden tespit açma.
+[GEÇTİ] Tespit formu açıkken Canlı HUD'ın gizlenmesi.
+[GEÇTİ] GPS güncelleme ve canlı GPS aç/kapat.
+[GEÇTİ] Navigasyon URL'si üretme.
+[GEÇTİ] Parsel giriş noktası kaydetme.
+[GEÇTİ] Hızlı sonuçlar: Boş / İşgalli / Kısmi.
+[GEÇTİ] İşgal alanı çizme, son noktayı geri alma, çizimi bitirme ve temizleme.
+[GEÇTİ] Fotoğraf ekleme ve silme.
+[GEÇTİ] İmzayı temizleme.
+[GEÇTİ] Parsel saha notu ve hazır saha notu etiketi.
+[GEÇTİ] Saha→Büro görevi seçimi.
+[GEÇTİ] Tekrar gidilecek işareti ve nedeni.
+[GEÇTİ] Taslak kaydetme.
+[GEÇTİ] Tespiti tamamlama ve sonraki canlı hedefe geçiş.
+[GEÇTİ] Bildirim (toast) görünürken Kaydet düğmesine dokunabilme.
+[GEÇTİ] Akıllı rota yenileme.
+[GEÇTİ] Akıllı Saha Asistanı, önerilen tespiti açma ve navigasyon.
+[GEÇTİ] Gün planı/süre tahmini.
+[GEÇTİ] “Buradayken bak” / yakın Hazine parselleri.
+[GEÇTİ] KML eksik listesinin gösterimi.
+[GEÇTİ] Toplu KML ekleme; eksik KML sayısının azalması.
+[GEÇTİ] Tekil KML eşleştirme akışı.
+[GEÇTİ] KML eşleştirme raporunu indirme.
+[GEÇTİ] TKGM Aç ve parsel bilgisini panoya hazırlama.
+[GEÇTİ] Mahallemi çevrimdışı hazırla.
+[GEÇTİ] Çevrimdışı hazırlık öz testi.
+[GEÇTİ] Çevrimdışı harita KML fallback görünümü.
+[GEÇTİ] Mahalle saha paketi indirme.
+[GEÇTİ] Saha sonuçlarını dışa aktarma.
+[GEÇTİ] Cihaz yedeği alma ve geri yükleme.
+[GEÇTİ] iPhone'a Ekle yardım penceresi aç/kapat.
+[GEÇTİ] GPS izin reddinde kontrollü kullanıcı uyarısı.
+[GEÇTİ] Cihaz verilerini çift onay ile temizleme.
+[GEÇTİ] Pil koruma modu.
+[GEÇTİ] Mahalleden çıkış/kapanış kontrolü.
+[GEÇTİ] Test edilen ana akışlarda JavaScript pageerror oluşmadı.
+
+v0.17.3 TESTİNDE BULUNUP v0.17.4'TE DÜZELTİLEN GERÇEK SORUNLAR
+1. Canlı Saha HUD çubuğu tespit formunun altındaki Kaydet/Tamamla alanını kapatabiliyordu.
+   Çözüm: Editör açıkken HUD gizleniyor; listeye dönünce yeniden görünür.
+2. Alt bildirim/toast katmanı 2,6 saniye boyunca alt düğmelere dokunmayı engelleyebiliyordu.
+   Çözüm: Toast pointer-events:none; bilgi görünürken de düğmeler kullanılabiliyor.
+
+SONUÇ
+v0.17.4, GitHub'a yükleme öncesi regresyon/kullanıcı akış testlerinden geçirilmiştir.
+Fiziksel iPhone Safari üzerinde son kabul için özellikle şu 5 kontrol önerilir:
+1) Tam ekran Harita → Tespiti Aç
+2) Kamera Yön → Kapat
+3) Kamera Yön → Seçili Parseli Aç
+4) Canlı Saha → hedefi aç → Taslak Kaydet
+5) Fotoğraf/GPS/KML ile sonuç dışa aktarımı

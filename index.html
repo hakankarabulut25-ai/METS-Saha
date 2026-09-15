@@ -10,12 +10,12 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-<link rel="stylesheet" href="app.css?v=0.17.1">
+<link rel="stylesheet" href="app.css?v=0.17.4">
 <title>METS Saha</title>
 </head>
 <body>
 <header>
-  <div><b>METS Saha</b><small>v0.17.1 · QR Paket Aktarımı + Akıllı Saha Yardımcıları</small></div>
+  <div><b>METS Saha</b><small>v0.17.4 · Tam Kullanıcı Testi + Kararlılık</small></div>
   <div class="head-actions"><span id="netBadge" class="net"></span><button id="installHelp">iPhone'a Ekle</button></div>
 </header>
 <main>
@@ -211,7 +211,7 @@
   <div class="camera-ar-shade"></div>
   <div class="camera-ar-top">
     <div><b>📷 Kamera Yön Görüşü</b><small id="cameraArStatus">Kamera hazırlanıyor…</small></div>
-    <button type="button" id="cameraArClose" class="primary">Kapat</button>
+    <button type="button" id="cameraArClose" class="primary" aria-label="Kamera yön görünümünü kapat">✕ Kapat</button>
   </div>
   <div class="camera-ar-crosshair"><span></span><i></i></div>
   <div id="cameraArLabels" class="camera-ar-labels"></div>
@@ -225,5 +225,5 @@
 <dialog id="help"><h3>iPhone'a ekleme</h3><p>Bu uygulama HTTPS üzerinden Safari'de açılmalıdır. Safari → Paylaş → <b>Ana Ekrana Ekle</b>. İlk açılıştan sonra uygulama çevrimdışı kullanılabilir.</p><p><b>Önemli:</b> Uygulamayı silmeden veya Safari site verilerini temizlemeden önce “Cihaz Yedeği Al” ile yedek oluşturun.</p><button id="closeHelp" class="primary">Tamam</button></dialog>
 <div id="toast"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script src="app.js?v=0.17.1"></script>
+<script src="app.js?v=0.17.4"></script>
 </body></html>

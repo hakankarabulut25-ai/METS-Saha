@@ -1,0 +1,11 @@
+METS Saha v0.17.3 – Kamera + Tespit Açma Kararlılık Düzeltmesi
+
+- Kamera Yön Görüşü Kapat düğmesi iPhone dokunma olayları için güçlendirildi.
+- Kamera kapanırken video durdurulur, medya trackleri kapatılır ve overlay zorunlu olarak gizlenir.
+- Kamera açıkken uygulama arka plana geçerse kamera güvenli biçimde kapatılır.
+- Mahalle haritasındaki Leaflet popup “Tespiti Aç” düğmesi doğrudan popup açılışında bağlanır.
+- Leaflet'in click propagation engellemesine karşı document capture yedeği eklendi.
+- Tam ekran haritada geçersiz parsel kimliği nedeniyle ekranın kapanıp tespitin açılmaması önlendi: kayıt doğrulanmadan tam ekrandan çıkılmaz.
+- Tespit ekranı açılırken alt bileşenlerden biri hata verse bile ana editör ekranının açılması korunur.
+- Kamera açıkken tespit açılırsa kamera önce güvenli biçimde kapanır.
+- Cache sürümü 0.17.3'e yükseltildi.

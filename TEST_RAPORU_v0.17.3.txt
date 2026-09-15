@@ -1,0 +1,10 @@
+METS Saha v0.17.3 Test Planı / Sonuç
+
+1. JavaScript sözdizimi: GEÇTİ.
+2. HTML kimlik tekrar kontrolü: GEÇTİ.
+3. Harita popup Tespiti Aç olay bağlama: Leaflet popupopen doğrudan handler + capture yedeği eklendi.
+4. Tam ekran -> Tespiti Aç: kayıt doğrulaması open() başına alındı; geçersiz id tam ekranı kapatmıyor.
+5. Kamera kapatma: pointerup/click kritik handler, track stop, video pause, overlay hidden/display:none kontrolü eklendi.
+6. Kamera -> Seçili Parseli Aç: kamera kapandıktan sonra tespit açma gecikmeli ve id korunarak çalışır.
+7. Service Worker cache: v0.17.3.
+8. Fiziksel iPhone kamera/GPS/pusula kabul testi: kullanıcı cihazında doğrulanmalı.

@@ -1,0 +1,8 @@
+METS Saha v0.17.2 – Kararlılık Düzeltmesi
+
+- iOS Safari’de görülen “ReferenceError: Can't find variable: haversine” hatası giderildi.
+- Gün planı, yakındaki Hazine taşınmazları ve süre tahmini hesapları tek mesafe fonksiyonu (haversineMeters) üzerinde birleştirildi.
+- Eski çağrılara karşı geriye uyumlu haversine takma adı eklendi.
+- Service Worker/cache anahtarı 0.17.2’ye yükseltildi; eski JS dosyasının kalma riski azaltıldı.
+- Sürüm etiketi ve kaynak dosya sorguları 0.17.2 olarak güncellendi.
+- Tam ekran harita, “En Yakın Tespit Edilmemiş Parsel” ve tespit sonrası sıradaki hedefte kullanılan eksik nearestIncomplete yardımcı fonksiyonu eklendi.
