@@ -1,0 +1,12 @@
+METS Saha v0.13.1 — KML Hazırlık Merkezi
+
+- Seçili mahallede KML hazır / eksik / kontrol sayıları.
+- KML eksik taşınmaz listesi.
+- TKGM Parsel Sorgu kısayolu ve parsel bilgisini panoya kopyalama.
+- Tekil veya çoklu KML dosyası yükleme.
+- Bir mahalle KML dosyasındaki birden çok Polygon/Placemark kaydını toplu işleme.
+- Öncelikli eşleştirme: TAKBİS/Zemin/Taşınmaz No; ikinci yöntem ilçe+mahalle+ada+parsel.
+- TAKPAS yüzölçümü ile KML alan farkı > %10 ise otomatik KML kontrol statüsü.
+- Mobilde eklenen KML geometri güncellemeleri saha sonuç JSON'una kmlUpdates olarak eklenir.
+- KML eşleştirme raporu JSON olarak dışa aktarılabilir.
+- TKGM halka açık sitesi otomatik taranmaz; kullanıcı resmî kaynaktan KML indirir.

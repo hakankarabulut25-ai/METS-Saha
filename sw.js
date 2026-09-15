@@ -1,5 +1,5 @@
-const C='mets-saha-v05-20260915';
+const C='mets-saha-v0.17';
 const A=['./','index.html','app.css','app.js','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(A)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(x=>{if(x&&x.ok){const y=x.clone();caches.open(C).then(c=>c.put(e.request,y))}return x}).catch(()=>e.request.mode==='navigate'?caches.match('./index.html'):Promise.reject())))});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);const isLeaflet=u.hostname==='unpkg.com'&&u.pathname.includes('/leaflet@1.9.4/');const isTile=u.hostname.includes('arcgisonline.com')||u.hostname.includes('tile.openstreetmap.org');if(isTile){e.respondWith(fetch(e.request).catch(()=>new Response('',{status:503,statusText:'Offline map tiles unavailable'})));return;}e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(x=>{if(x&&(x.ok||isLeaflet)){const y=x.clone();caches.open(C).then(c=>c.put(e.request,y)).catch(()=>{})}return x}).catch(()=>e.request.mode==='navigate'?caches.match('./index.html'):Promise.reject())))});

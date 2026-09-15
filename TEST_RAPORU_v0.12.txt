@@ -1,0 +1,13 @@
+METS Saha v0.12 — Kamera / AR Yön Görüşü Test Özeti
+Tarih: 15.09.2026
+
+1) JavaScript sözdizimi: GEÇTİ (node --check)
+2) HTML kimlikleri: 115 toplam / 115 benzersiz, mükerrer yok.
+3) JavaScript ekran referansları: 114/114 HTML içinde mevcut.
+4) Kamera akışı: kullanıcı eylemiyle getUserMedia(environment) başlatma; kapanışta tüm video track'lerini durdurma kodu mevcut.
+5) Pusula/GPS akışı: v0.10/v0.11 radar altyapısıyla ortak; yön değişiminde kamera etiketleri yeniden hesaplanıyor.
+6) KML şartı: yalnız geometrisi bulunan kayıtlar kamera yön görünümünde aday oluyor.
+7) Güvenlik: video kaydı/persist işlemi yok; yalnız canlı video öğesine bağlanıyor.
+8) Uyarı: Kamera/AR etiketi yönlendirme amaçlı; resmi/kadastro sınır tespiti değildir.
+
+Not: Fiziksel iPhone kamera, pusula kalibrasyonu, cihaz yönü ve GPS doğruluğu tarayıcı/donanıma bağlıdır. Son kabul testi gerçek iPhone'da HTTPS/PWA üzerinden yapılmalıdır.

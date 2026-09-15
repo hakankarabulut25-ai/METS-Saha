@@ -1,0 +1,15 @@
+METS Saha v0.13 TEST RAPORU
+Tarih: 15.09.2026
+
+1. JavaScript sözdizimi: GEÇTİ (node --check)
+2. HTML ID kontrolü: 123 ID, mükerrer yok.
+3. JS -> HTML referans kontrolü: 122 referans, eksik yok.
+4. Gerçek saha paketi şema kontrolü: 104 taşınmaz okundu; 60 kayıtta KML geometrisi bulundu.
+5. Saha Hazırlık Merkezi fonksiyonları: mevcut.
+6. Mahalle paketi dışa aktarma fonksiyonu: mevcut.
+7. Çevrimdışı self-test fonksiyonu: mevcut.
+8. Service Worker: v0.13 cache sürümü; yerel uygulama kabuğu ön-cache; harita tile'ları toplu/cache dışı.
+9. APP_VERSION: 0.13.
+10. Fiziksel iPhone çevrimdışı geçişi ve PWA cache davranışı: gerçek cihazda kabul testi önerilir.
+
+Tasarım notu: Uydu/harita karoları lisans, kota ve cihaz depolaması nedeniyle mahalle bazında toplu cache edilmez. İnternet yokken KML kroki kullanılır.

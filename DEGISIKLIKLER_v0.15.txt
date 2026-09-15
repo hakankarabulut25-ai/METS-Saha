@@ -1,0 +1,11 @@
+METS Saha v0.15 – Canlı Saha Modu
+
+- İlçe/mahalle bazında Canlı Saha Modu eklendi.
+- GPS konumuna göre en yakın tamamlanmamış KML’li parsel otomatik hedef seçilir.
+- Canlı HUD: hedef ada/parsel, kalan mesafe, GPS hassasiyeti ve hedefe ulaşma durumu.
+- GPS doğruluğu yeterliyken hedef parsel KML sınırına girildiğinde titreşim ve uyarı.
+- Güvenlik nedeniyle uygulama formu sürüş/hareket sırasında kendiliğinden açmaz; kullanıcı güvenli yerde tek dokunuşla açar.
+- Tespit tamamlanınca Canlı Saha otomatik olarak sonraki hedefi seçer.
+- Sıradaki hedefi manuel atlama ve canlı modu durdurma eklendi.
+- Mahalle ilerlemesi, kalan, tekrar ziyaret ve aktarılmamış kayıt sayacı canlı mod kartında gösterilir.
+- v0.14 ve önceki özellikler korunmuştur.

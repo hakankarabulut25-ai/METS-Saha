@@ -1,0 +1,10 @@
+METS Saha v0.15 – Statik Test Raporu
+Tarih: 15.09.2026
+
+JavaScript node --check: GEÇTİ
+HTML ID sayısı: 152
+Mükerrer ID: 0 []
+JS ekran referansı: 150
+Eksik referans: 0 []
+
+Not: GPS, titreşim, pusula ve iOS PWA yaşam döngüsü fiziksel cihaz kabul testi gerektirir.

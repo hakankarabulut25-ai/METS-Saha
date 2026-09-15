@@ -1,0 +1,4 @@
+METS Saha v0.17
+- Masaüstü v1.9.0 ile yerel ağ QR paket aktarımı için kullanıcı akışı eklendi.
+- QR okutulduktan sonra indirilen JSON paketinin Saha Paketi Yükle ile seçilmesine yönelik görünür yardım eklendi.
+- Mevcut v0.16 Akıllı Saha Yardımcıları korunmuştur.

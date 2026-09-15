@@ -1,0 +1,10 @@
+METS Saha v0.6.1 - Tam Ekran Saha Haritası
+
+- Mahalle haritası tek dokunuşla tam ekran saha moduna alınabilir.
+- Tam ekranda tek elle kullanılabilen alt/üst kontrol şeridi eklendi.
+- Ada/parsel etiketleri harita üzerinde gösterilir; yakınlaştırma seviyesine göre açılıp kapanır.
+- Mahalle haritasında canlı GPS takibi eklendi.
+- Tam ekran çubuğunda GPS kalitesi ve sıradaki tamamlanmamış parsele canlı mesafe gösterilir.
+- Konumuma dön ve en yakın tamamlanmamış parsel hızlı erişimleri eklendi.
+- Tespit tamamlandığında sıradaki en yakın tamamlanmamış parsel otomatik önerilir.
+- Kararlı v0.5 ve v0.6 veri yapısı korunur.

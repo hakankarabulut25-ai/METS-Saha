@@ -1,0 +1,22 @@
+METS Saha v0.7 - İşgal Alanı ve Ölçüm
+Tarih: 15.09.2026
+
+Yeni özellikler
+- Parsel haritası üzerinde işgal/kullanım alanını nokta nokta çizme.
+- Çizilen alanın yaklaşık m² hesabı.
+- Çizilen alanın KML parsel alanına oranını yüzde olarak gösterme.
+- Kısmen işgalli tespitte çizim tamamlanınca kullanım alanını forma otomatik aktarma.
+- Son noktayı geri alma, çizimi temizleme ve yeniden çizme.
+- Çizimin kendi kendini kesmesi, parsel dışına taşması veya parsel alanını aşması durumunda güvenlik kontrolü.
+- KML geometrisinden yaklaşık parsel alanı hesabı.
+- TAKPAS yüzölçümü ile KML alanı fark yüzdesini gösterme.
+- Delil yeterliliğinde kısmi işgal çizimi için ek kontrol/uyarı.
+
+Korunan özellikler
+- v0.6.1 tam ekran mahalle haritası ve tek elle saha kontrolleri.
+- Uydu/harita altlığı, ada/parsel etiketleri, canlı GPS ve en yakın tamamlanmamış parsel.
+- Mahalle ilerleme, saha hazırlık puanı, tekrar gidilecekler, gün özeti, aktarılmamış kayıt alarmı.
+- Dinamik form, fotoğraf, imza, saha-büro görevleri ve cihaz yedeği.
+
+Önemli not
+Çizilen işgal alanı saha çalışmasını kolaylaştıran yaklaşık ölçümdür. Kadastro/harita mühendisliği ölçümü veya resmi sınır tespiti yerine geçmez.

@@ -1,0 +1,10 @@
+METS Saha v0.11 – Akıllı Saha Asistanı
+
+- Seçili mahallede kalan saha işini tek ekranda analiz eden Akıllı Saha Asistanı eklendi.
+- Asistan; GPS mesafesi, taslak/tamamlanmamış durum, tekrar ziyaret, KML kontrolü, geçmiş değişimleri ve büro görevlerinden bir öncelik puanı üretir.
+- “Şimdi ne yapmalıyım?” kartı en uygun sıradaki parseli önerir; doğrudan tespiti açabilir veya navigasyona gönderebilir.
+- İlk 5 öncelikli saha işi nedenleri ve yaklaşık mesafeleriyle sıralanır.
+- Kapanış kontrolünde KML eksikleri, KML kontrol kayıtları, delil eksikleri, tekrar ziyaretler, bekleyen büro görevleri, aktarılmamış kayıtlar ve eski saha paketi uyarısı birlikte gösterilir.
+- GPS yoksa asistan çalışmaya devam eder ancak mesafeye dayalı öncelik kullanmaz; kullanıcıya bunu açıkça bildirir.
+- Öneriler idari/hukuki karar üretmez; saha organizasyonu ve eksik kontrolü amacı taşır.
+- v0.10 Baktığım Yer + Akıllı Rota, v0.9 radar, v0.8 geçmiş/değişim ve önceki özellikler korunur.

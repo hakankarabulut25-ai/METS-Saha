@@ -1,0 +1,13 @@
+METS Saha v0.14 – Akıllı Kamera + Saha Kanıtı + Tamamlama Kontrolü
+
+- Fotoğraf türleri: Genel görünüm, İşgal alanı, Yapı, Sınır, Giriş, Diğer.
+- Fotoğrafa çekim zamanı, mevcut GPS, pusula yönü ve basit kalite analizi meta verisi eklenir.
+- Çok karanlık, aşırı aydınlık veya bulanık olabilecek fotoğraflar uyarı olarak işaretlenir.
+- Tespit durumuna göre önerilen fotoğraf türleri otomatik gösterilir.
+- Önceki tespitin ilk fotoğrafı aynı açıdan çekim için referans olarak gösterilir.
+- Saha tamamlama kontrolü kritik eksik / kontrol gerekli / sahada tamam şeklinde puan üretir.
+- Hızlı saha giriş butonları eklendi.
+- Parsel saha hafızası (araç girmez, muhtarla git, çit, dere, telefon çekmiyor, giriş noktası vb.) eklendi.
+- Mahalleden çıkış kontrolü: tamamlanmamış, tekrar ziyaret, eksik taslak, aktarılmamış kayıt ve KML eksiklerini tek ekranda tarar.
+
+Not: Fotoğraf kalite analizi yardımcı bir kontroldür; hukuki/teknik delil yeterliliği kararı değildir.

@@ -1,0 +1,14 @@
+METS Saha v0.13.1 — KML Hazırlık Merkezi Test Özeti
+Tarih: 15.09.2026
+
+1. JavaScript sözdizimi: GEÇTİ (node --check)
+2. HTML kimlik kontrolü: 131 ID / 131 benzersiz, mükerrer yok.
+3. JS->HTML ekran referans kontrolü: 130 referans / 0 eksik.
+4. Gerçek 104 taşınmazlık saha paketi: 60 KML geometrili, 44 KML eksik kayıt doğru sayılıyor.
+5. Gerçek TKGM/MEGSİS KML örnek yapısı: ExtendedData içindeki takbisno, ilçe, mahalle, ada/parsel ve Polygon coordinates alanları okunabilir yapıda doğrulandı.
+6. Eşleştirme güvenlik kuralı: önce TAKBİS/Zemin/Taşınmaz no; sonra benzersiz ilçe+mahalle+ada+parsel. Alan farkı > %10 ise KML kontrol.
+7. Masaüstüne geri aktarım: sonuç şeması v4 kmlUpdates alanı ile Tespit Sistemi v1.8.0 içe aktarımına bağlandı.
+8. Mevcut güvenli masaüstü KML'sinin mobil KML ile otomatik ezilmemesi kuralı eklendi.
+9. TKGM sitesi otomatik taranmıyor; kullanıcı resmi kaynaktan KML indiriyor.
+
+Not: iPhone Safari dosya seçici ve gerçek TKGM'den indirilmiş farklı KML örnekleri fiziksel cihaz kabul testinde ayrıca doğrulanmalıdır.

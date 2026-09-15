@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-  <div><b>METS Saha</b><small>v0.5 · Mahalle toplu harita + parsel bulma</small></div>
+  <div><b>METS Saha</b><small>v0.17 · QR Paket Aktarımı + Akıllı Saha Yardımcıları</small></div>
   <div class="head-actions"><span id="netBadge" class="net"></span><button id="installHelp">iPhone'a Ekle</button></div>
 </header>
 <main>
@@ -27,18 +27,131 @@
     <button id="exportBtn" class="secondary">Saha Sonuçlarını Dışa Aktar</button>
     <button id="backupBtn" class="ghost">Cihaz Yedeği Al</button>
     <label class="ghost file">Cihaz Yedeğini Geri Yükle<input id="backupInput" type="file" accept=".json,application/json"></label>
+    <div class="qr-import-hint"><b>📲 QR ile masaüstünden gönderim</b><span>Masaüstünde “QR ile Telefona Gönder” → iPhone Kamera ile okut → paketi indir → burada “Saha Paketi Yükle” ile seç.</span></div>
     <div id="pkgInfo" class="muted"></div>
+    <div id="syncAlert" class="sync-alert" hidden></div>
     <div id="storageInfo" class="muted"></div>
+  </div>
+  <div class="card offline-prep-card">
+    <div class="section-title-row"><div><h2>🧰 Saha Hazırlık Merkezi</h2><p class="muted">Seçili mahalleyi internetsiz çalışmaya hazırlayın, veri eksiklerini kontrol edin ve küçük mahalle paketi oluşturun.</p></div><span id="offlinePrepBadge" class="chip">Mahalle seçin</span></div>
+    <div id="offlinePrepScore" class="prep-score"></div>
+    <div id="offlinePrepChecks" class="prep-checks"></div>
+    <div class="prep-actions">
+      <button type="button" id="prepareOfflineBtn" class="primary">Mahallemi Çevrimdışı Hazırla</button>
+      <button type="button" id="exportNeighborhoodBtn" class="secondary">Mahalle Paketi Oluştur</button>
+      <button type="button" id="offlineTestBtn" class="secondary">Çevrimdışı Hazırlığı Test Et</button>
+      <button type="button" id="clearOfflinePrepBtn" class="ghost">Hazırlık İşaretini Temizle</button>
+    </div>
+    <div id="offlinePrepInfo" class="offline-prep-info muted"></div>
+    <p class="muted map-note"><b>Not:</b> Uygulama, KML sınırları ve kayıtlar çevrimdışı çalışır. Uydu/çevrimiçi harita altlığı toplu olarak önbelleğe alınmaz; internet yoksa sistem otomatik KML krokisine döner.</p>
+  </div>
+
+  <div class="card kml-prep-card">
+    <div class="section-title-row"><div><h2>🗺️ KML Hazırlık Merkezi</h2><p class="muted">Sahaya çıkmadan önce seçili mahallede KML'si eksik taşınmazları görün; TKGM Parsel Sorgu'dan indirdiğiniz tekil veya toplu KML dosyalarını telefonda otomatik eşleştirin.</p></div><span id="kmlPrepBadge" class="chip">Mahalle seçin</span></div>
+    <div id="kmlPrepStats" class="kml-prep-stats"></div>
+    <div class="kml-prep-actions">
+      <label class="primary file">Toplu KML Ekle<input id="kmlBulkInput" type="file" accept=".kml,application/vnd.google-earth.kml+xml,text/xml,application/xml" multiple></label>
+      <button type="button" id="kmlOpenTkgmBtn" class="secondary">TKGM Parsel Sorgu'yu Aç</button>
+      <button type="button" id="kmlExportReportBtn" class="ghost">Eşleştirme Raporunu İndir</button>
+    </div>
+    <div id="kmlPrepReport" class="kml-prep-report muted"></div>
+    <div id="kmlMissingList" class="kml-missing-list"></div>
+    <input id="kmlSingleInput" type="file" accept=".kml,application/vnd.google-earth.kml+xml,text/xml,application/xml" hidden>
+    <p class="muted map-note"><b>Güvenlik:</b> METS Saha TKGM'nin halka açık sitesini otomatik taramaz. KML dosyasını siz resmî kaynaktan indirirsiniz; uygulama dosyanın içindeki TAKBİS no/ilçe/mahalle/ada/parsel bilgilerini kullanarak eşleştirir. Şüpheli eşleşmeler otomatik olarak “KML kontrol” durumuna alınır.</p>
+  </div>
+
+
+  <div class="card smart-ops-card">
+    <div class="section-title-row"><div><h2>🧠 Akıllı Saha Yardımcıları</h2><p class="muted">Günün işini planlar, yakındaki diğer Hazine taşınmazlarını hatırlatır ve cihaz durumunu izler.</p></div><span id="smartOpsBadge" class="chip">Hazır</span></div>
+    <div id="resumeBox" class="resume-box" hidden></div>
+    <div class="smart-ops-grid">
+      <div class="mini-panel"><b>⏱ Gün Planı</b><label>Sahada ayıracağım süre<select id="dayPlanMinutes"><option value="60">1 saat</option><option value="120">2 saat</option><option value="180" selected>3 saat</option><option value="240">4 saat</option><option value="360">6 saat</option></select></label><button type="button" id="dayPlanBtn" class="primary">Planı Oluştur</button><div id="dayPlanResult" class="muted"></div></div>
+      <div class="mini-panel"><b>📍 Buradayken Bak</b><p class="muted">Mevcut konumun çevresindeki tamamlanmamış diğer Hazine taşınmazlarını gösterir.</p><button type="button" id="nearbyTreasuryBtn" class="secondary">Yakındaki Parselleri Bul</button><div id="nearbyTreasuryResult" class="muted"></div></div>
+      <div class="mini-panel"><b>🔋 Pil / Veri Koruma</b><div id="batteryStatus" class="muted">Pil bilgisi kontrol ediliyor…</div><label class="inline-check"><input id="batterySaverToggle" type="checkbox"> Pil koruma modunu kullan</label><small class="muted">Açıkken GPS takibinde daha düşük güç tüketimli ayarlar kullanılır.</small></div>
+    </div>
+  </div>
+
+  <div class="card live-card" id="liveModeCard">
+    <div class="section-title-row"><div><h2>⚡ Canlı Saha Modu</h2><p class="muted">Mahallede sıradaki işi seçer, konuma göre yaklaşmayı izler ve tespit bitince otomatik olarak sonraki hedefi hazırlar.</p></div><span id="liveBadge" class="chip">Kapalı</span></div>
+    <div id="liveHero" class="live-hero"><div><b>Canlı saha modu hazır</b><span>İlçe ve mahalleyi seçip modu başlatın.</span></div></div>
+    <div class="live-actions"><button type="button" id="liveStartBtn" class="primary">▶ Canlı Modu Başlat</button><button type="button" id="liveOpenBtn" class="secondary" disabled>Hedef Tespiti Aç</button><button type="button" id="liveNextBtn" class="secondary" disabled>Sıradaki Hedef</button><button type="button" id="liveStopBtn" class="ghost" disabled>Modu Durdur</button></div>
+    <div id="liveProgress" class="live-progress"></div>
+    <div id="liveHint" class="live-hint muted">Canlı mod güvenli kullanım için formu araç hareket halindeyken kendiliğinden açmaz; parsele ulaştığınızda tek dokunuşla açarsınız.</div>
   </div>
   <div class="card neighborhood-card">
     <div class="section-title-row"><div><h2>Mahalle Haritası</h2><p class="muted">Seçtiğiniz mahallede KML geometrisi bulunan bütün Hazine taşınmazlarını aynı haritada görün.</p></div><span id="neighborhoodCount" class="chip"></span></div>
     <div class="neighborhood-filters"><label>İlçe<select id="districtSelect"></select></label><label>Mahalle<select id="neighborhoodSelect"></select></label></div>
+    <div id="progressPanel" class="progress-panel"></div>
+    <div id="readinessPanel" class="readiness-panel"></div>
+    <div class="map-filter-panel" aria-label="Harita filtreleri">
+      <b>Haritada göster</b>
+      <label><input type="checkbox" data-map-filter="todo" checked> Yapılmadı</label>
+      <label><input type="checkbox" data-map-filter="draft" checked> Taslak</label>
+      <label><input type="checkbox" data-map-filter="done" checked> Tamamlandı</label>
+      <label><input type="checkbox" data-map-filter="review" checked> KML kontrol</label><label><input type="checkbox" id="parcelLabels" checked> Ada/Parsel etiketleri</label>
+    </div>
     <div class="legend" aria-label="Tespit durumu renk açıklaması"><span><i class="legend-dot todo"></i>Tespit edilmedi</span><span><i class="legend-dot draft"></i>Taslak</span><span><i class="legend-dot done"></i>Tamamlandı</span><span><i class="legend-dot review"></i>KML kontrol</span></div>
     <p id="neighborhoodSummary" class="muted"></p>
+    <div id="fullMapBar" class="full-map-bar" hidden>
+      <div class="full-map-title"><b id="fullMapTitle">Mahalle Haritası</b><span id="fullMapLive">GPS bekleniyor</span></div>
+      <div class="full-map-actions">
+        <button type="button" id="fullLocateBtn">◎ Konumum</button>
+        <button type="button" id="fullTrackBtn">● Canlı</button>
+        <button type="button" id="fullNearestBtn">➤ En Yakın</button>
+        <button type="button" id="fullLabelsBtn">Etiket</button>
+        <button type="button" id="fullRadarBtn">◉ Radar</button>
+        <button type="button" id="fullCloseBtn" class="primary">Çıkış</button>
+      </div>
+    </div>
     <div id="neighborhoodMap" class="neighborhood-map" aria-label="Mahalledeki taşınmazların toplu haritası"></div>
     <div id="neighborhoodFallback" class="neighborhood-fallback" hidden><svg id="neighborhoodSvg" viewBox="0 0 720 480" role="img" aria-label="Mahalle taşınmazları çevrimdışı krokisi"></svg></div>
-    <div class="neighborhood-actions"><button type="button" id="neighborhoodGpsBtn" class="secondary">Konumumu Göster</button><button type="button" id="nearestBtn" class="primary">En Yakın Tespit Edilmemiş Parsel</button></div>
+    <div class="neighborhood-actions"><button type="button" id="neighborhoodGpsBtn" class="secondary">Konumumu Göster</button><button type="button" id="nearestBtn" class="primary">En Yakın Tespit Edilmemiş Parsel</button><button type="button" id="fullMapBtn" class="secondary">⛶ Tam Ekran Harita</button></div>
     <div id="nearestInfo" class="nearest-info muted"></div>
+  </div>
+
+  <div class="card radar-card">
+    <div class="section-title-row"><div><h2>Akıllı Saha Navigasyonu</h2><p class="muted">Yakındaki tamamlanmamış parselleri mesafe ve yönleriyle gösterir.</p></div><span id="radarStatus" class="chip">Kapalı</span></div>
+    <div class="radar-wrap">
+      <div id="radarDial" class="radar-dial"><div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-cross h"></div><div class="radar-cross v"></div><div class="radar-north">K</div><div class="radar-you">●</div><div id="radarTargets"></div></div>
+      <div class="radar-side"><b id="radarHeading">Yön bekleniyor</b><span id="radarGpsText">GPS bekleniyor</span><button type="button" id="radarStartBtn" class="primary">Radar / Pusulayı Başlat</button><button type="button" id="radarNextBtn" class="secondary">Sıradaki Parsele Git</button></div>
+    </div>
+    <div id="radarList" class="radar-list muted">Radar başlatıldığında yakındaki tamamlanmamış parseller burada sıralanır.</div>
+    <p class="muted map-note">Telefon pusulası ve GPS yönlendirme amaçlıdır; resmi sınır tespiti değildir.</p>
+  </div>
+  <div class="card look-card">
+    <div class="section-title-row"><div><h2>👁 Baktığım Yer Hangi Parsel?</h2><p class="muted">Telefonu tuttuğunuz yöndeki KML'li Hazine parsellerini anlık sıralar.</p></div><span id="lookMeta" class="chip">Pusula bekleniyor</span></div>
+    <div class="look-controls"><label>Görüş açısı<select id="lookFov"><option value="30">30° dar</option><option value="60" selected>60° normal</option><option value="90">90° geniş</option></select></label><label>Menzil<select id="lookRange"><option value="500">500 m</option><option value="1200" selected>1,2 km</option><option value="2000">2 km</option></select></label><button type="button" id="lookStartBtn" class="primary">Baktığım Yer Modunu Başlat</button><button type="button" id="cameraArBtn" class="secondary">📷 Kamera Yön Görüşü</button></div>
+    <div id="lookHero" class="look-hero"><b>Konum bekleniyor</b><span>Radar / pusulayı başlatın.</span></div>
+    <div id="lookList" class="look-list"></div>
+    <p class="muted map-note">Yön ve parsel eşleştirmesi telefon pusulası, GPS ve KML geometrisine dayanır; resmi sınır tespiti değildir.</p>
+  </div>
+
+  <div class="card route-card">
+    <div class="section-title-row"><div><h2>🧭 5 Duraklık Akıllı Saha Rotası</h2><p class="muted">Bulunduğunuz noktadan başlayarak en yakın tamamlanmamış KML'li parselleri art arda sıralar.</p></div><button type="button" id="routeRefreshBtn" class="secondary">Rotayı Yenile</button></div>
+    <div id="proximityInfo" class="proximity-info muted">Canlı takip başladığında yaklaşma ve parsel içine girme uyarıları burada görünür.</div>
+    <div id="smartRoute" class="smart-route"></div>
+  </div>
+
+  <div class="card assistant-card">
+    <div class="section-title-row"><div><h2>✨ Akıllı Saha Asistanı</h2><p class="muted">Seçili mahallede kalan işi, konumu, eksikleri ve geçmiş değişimleri birlikte değerlendirip sıradaki işi önerir.</p></div><span id="assistantBadge" class="chip">Hazırlanıyor</span></div>
+    <div id="assistantHero" class="assistant-hero"><b>Mahalle analizi bekleniyor</b><span>Saha paketi ve konum bilgisine göre öneriler burada oluşur.</span></div>
+    <div class="assistant-actions"><button type="button" id="assistantRefreshBtn" class="primary">Asistanı Yenile</button><button type="button" id="assistantNavigateBtn" class="secondary">Önerilen Parsele Git</button><button type="button" id="assistantOpenBtn" class="secondary">Tespiti Aç</button></div>
+    <div id="assistantMetrics" class="assistant-metrics"></div>
+    <div class="assistant-columns"><div><b>Öncelikli işler</b><div id="assistantQueue" class="assistant-list"></div></div><div><b>Dikkat / kapanış kontrolü</b><div id="assistantWarnings" class="assistant-list"></div></div></div>
+    <p class="muted map-note">Öneriler cihazdaki saha verisi, KML, GPS ve geçmiş tespitlerden üretilir; idari/hukuki karar yerine geçmez.</p>
+  </div>
+
+  <div class="card dashboard-card">
+    <div class="section-title-row"><div><h2>Tekrar Gidilecekler</h2><p class="muted">Sahada yeniden kontrol gerektiren kayıtlar.</p></div><span id="revisitCount" class="chip"></span></div>
+    <div id="revisitList" class="mini-list"></div>
+  </div>
+  <div class="card dashboard-card">
+    <div class="section-title-row"><div><h2>Saha Günü Özeti</h2><p class="muted">Bugünkü saha çalışmasının cihazdaki özeti.</p></div><span id="dayBadge" class="chip"></span></div>
+    <div id="daySummary" class="summary-grid"></div>
+  </div>
+  <div class="card dashboard-card">
+    <div class="section-title-row"><div><h2>Mahalleden Çıkış Kontrolü</h2><p class="muted">Aynı yere tekrar gelmemek için ayrılmadan önce kalan işleri tarar.</p></div><button type="button" id="neighborhoodCloseBtn" class="secondary">Kontrol Et</button></div>
+    <div id="neighborhoodCloseReport" class="neighborhood-close-report muted">İlçe ve mahalleyi seçip kapanış kontrolünü çalıştırın.</div>
   </div>
   <div class="filters"><input id="search" placeholder="Mahalle, ada, parsel ara"><select id="status"><option value="all">Tümü</option><option value="draft">Taslak</option><option value="completed">Tamamlandı</option></select></div>
   <div id="list"></div>
@@ -48,27 +161,67 @@
   <button id="back">‹ Listeye dön</button>
   <div id="identity" class="card"></div>
   <form id="form" class="card">
+    <div class="card inset quick-field-box"><b>Hızlı Saha Girişi</b><p class="muted">Sık kullanılan durumları tek dokunuşla seçin; ayrıntıları gerektiğinde aşağıdan tamamlayın.</p><div class="quick-actions"><button type="button" data-quick-result="Boş-kullanılmıyor">Boş</button><button type="button" data-quick-result="İşgalli">İşgalli</button><button type="button" data-quick-result="Kısmen işgalli">Kısmi</button><button type="button" data-quick-result="Yerinde tespit edilemedi">Bulunamadı</button></div><div class="quick-actions compact"><button type="button" data-quick-use="Tarım">Tarım</button><button type="button" data-quick-use="Konut">Konut</button><button type="button" data-quick-use="Depo">Depo</button><button type="button" data-quick-use="Hayvancılık">Hayvancılık</button><button type="button" data-quick-use="Yol/Geçiş">Yol/Geçiş</button></div></div>
+    <div id="fieldMemoryBanner" class="field-memory-banner" hidden></div>
     <label>Tespit sonucu<select name="tespitSonucu"><option value="">Seçiniz</option><option>Boş-kullanılmıyor</option><option>İşgalli</option><option>Kısmen işgalli</option><option>Kamu kullanımında</option><option>Sınır ihtilafı</option><option>Yerinde tespit edilemedi</option></select></label>
-    <label>Kullanım amacı<select name="kullanimAmaclari"><option value="">Seçiniz</option><option>Tarım</option><option>Konut</option><option>Ticaret</option><option>Depo</option><option>Bahçe</option><option>Hayvancılık</option><option>Otopark</option><option>Yol/Geçiş</option><option>Diğer</option></select></label>
+    <div id="occupationFields"><label>Kullanım amacı<select name="kullanimAmaclari"><option value="">Seçiniz</option><option>Tarım</option><option>Konut</option><option>Ticaret</option><option>Depo</option><option>Bahçe</option><option>Hayvancılık</option><option>Otopark</option><option>Yol/Geçiş</option><option>Diğer</option></select></label>
     <div class="grid"><label>Kullanım alanı (m²)<input name="kullanimAlani" inputmode="decimal"></label><label>Başlangıç tarihi<input name="baslangicTarihi" type="date"></label></div>
     <label>Kullanıcı / fuzuli şagil<input name="kullaniciAdi"></label>
     <label>T.C. / VKN<input name="kullaniciKimlik" inputmode="numeric"></label>
-    <label>Adres / iletişim<textarea name="kullaniciAdres"></textarea></label>
+    <label>Adres / iletişim<textarea name="kullaniciAdres"></textarea></label></div>
     <label>Açıklama<textarea name="aciklama" rows="5"></textarea></label>
+    <label>İmza durumu<select name="imzaDurumu"><option value="">Seçiniz</option><option>İmzalandı</option><option>İmzadan imtina etti</option><option>Kullanıcı bulunamadı</option><option>İmza alınmadı / gerekli değil</option></select></label>
+    <div class="card inset revisit-box"><b>Tekrar ziyaret</b><label class="inline-check"><input id="revisitRequired" type="checkbox"> Bu taşınmaza tekrar gidilecek</label><label id="revisitReasonWrap" hidden>Neden<select id="revisitReason"><option value="">Seçiniz</option><option>Kullanıcı bulunamadı</option><option>Sınır belirsiz</option><option>Fotoğraf / delil eksik</option><option>KML kontrol gerekli</option><option>Ulaşım / hava engeli</option><option>Kurum / belge teyidi gerekli</option><option>Diğer</option></select></label></div>
+    <div class="card inset field-note-box"><b>Parsel Saha Hafızası</b><p class="muted">Bir sonraki ziyarette de görünecek pratik saha notları.</p><div class="field-note-tags"><label><input type="checkbox" data-field-note-tag="Araç girmez"> Araç girmez</label><label><input type="checkbox" data-field-note-tag="Muhtarla git"> Muhtarla git</label><label><input type="checkbox" data-field-note-tag="Çit / kapı var"> Çit / kapı var</label><label><input type="checkbox" data-field-note-tag="Dere / geçiş engeli"> Dere / geçiş engeli</label><label><input type="checkbox" data-field-note-tag="Telefon çekmiyor"> Telefon çekmiyor</label><label><input type="checkbox" data-field-note-tag="Giriş noktası önemli"> Giriş noktası önemli</label></div><label>Kısa saha notu<textarea id="parcelFieldNote" rows="2" placeholder="Örn. kuzey yoldan giriş daha uygun"></textarea></label></div>
+    <div class="card inset office-task-box"><b>Büroya Dönünce Yapılacaklar</b><p class="muted">Seçilen görevler masaüstü METS'e sonuç dosyasıyla aktarılır.</p><div class="task-checks"><label><input type="checkbox" data-office-task="TCKN araştır"> TCKN araştır</label><label><input type="checkbox" data-office-task="KML kontrol"> KML kontrol</label><label><input type="checkbox" data-office-task="İzin araştır"> İzin araştır</label><label><input type="checkbox" data-office-task="Dosya incele"> Dosya incele</label><label><input type="checkbox" data-office-task="Hukuki değerlendirme"> Hukuki değerlendirme</label><label><input type="checkbox" data-office-task="İmar / kurum araştırması"> İmar / kurum araştırması</label></div></div>
+    <div id="evidencePanel" class="evidence-panel"></div>
+    <div id="historyPanel" class="card inset history-panel">
+      <div class="section-title-row"><div><b>Geçmiş ve Değişim Analizi</b><p class="muted">Son tamamlanmış tespitle mevcut saha kaydını karşılaştırır. Geçmiş kayıtlar bu cihazda tamamlanan tespitlerle oluşur.</p></div><span id="historyBadge" class="chip">İlk tespit</span></div>
+      <div id="changeSummary" class="change-summary"></div>
+      <div id="photoCompare" class="photo-compare"></div>
+      <div class="history-timeline"></div>
+    </div>
     <div class="card inset map-card"><b>Parsel Haritası / Konum</b>
       <p id="parcelStatus" class="parcel-status muted">Parsel bilgisi hazırlanıyor…</p>
       <div id="parcelMap" class="parcel-map" aria-label="Parsel haritası"></div>
       <div id="parcelFallback" class="parcel-fallback" hidden><svg id="parcelSvg" viewBox="0 0 360 260" role="img" aria-label="Parsel sınırı ve GPS konumu"></svg></div>
-      <p id="gpsText" class="muted">Henüz GPS konumu alınmadı.</p>
-      <div class="map-actions"><button type="button" id="gpsBtn" class="secondary">Konumumu Güncelle</button><button type="button" id="trackBtn" class="secondary">Canlı Takip Başlat</button><button type="button" id="navBtn" class="primary">Parsele Git</button></div>
-      <p class="muted map-note">Parsel sınırı masaüstü METS'teki KML geometrisinden çizilir. Altlık harita yalnız yön bulma amaçlıdır; konumsal doğruluk telefon GPS hassasiyeti ve KML verisine bağlıdır.</p>
+      <div class="gps-row"><p id="gpsText" class="muted">Henüz GPS konumu alınmadı.</p><span id="gpsQuality" class="gps-quality">GPS yok</span></div>
+      <div class="map-actions"><button type="button" id="gpsBtn" class="secondary">Konumumu Güncelle</button><button type="button" id="trackBtn" class="secondary">Canlı Takip Başlat</button><button type="button" id="navBtn" class="primary">Parsele Git</button><button type="button" id="entryBtn" class="secondary">⌖ Giriş Noktasını Kaydet</button></div><div id="entryInfo" class="entry-info muted"></div>
+      <div id="areaCompare" class="area-compare"></div>
+      <div class="occupation-tools">
+        <div class="occupation-head"><b>İşgal Alanı Ölçümü</b><span id="occupationBadge" class="chip">Çizim yok</span></div>
+        <p class="muted">Kısmi kullanım alanını parsel haritasında köşe noktalarına dokunarak çizin. Alan yaklaşık saha ölçümüdür.</p>
+        <div class="occupation-actions"><button type="button" id="drawOccupationBtn" class="secondary">✎ İşgal Alanı Çiz</button><button type="button" id="undoOccupationBtn" class="ghost">↶ Son Nokta</button><button type="button" id="finishOccupationBtn" class="primary">✓ Çizimi Bitir</button><button type="button" id="clearOccupationBtn" class="ghost">Temizle</button></div>
+        <div id="occupationInfo" class="occupation-info muted">Henüz işgal alanı çizilmedi.</div>
+      </div>
+      <p class="muted map-note">Parsel sınırı masaüstü METS'teki KML geometrisinden çizilir. Uydu/harita altlığı ve telefon GPS'i yönlendirme amaçlıdır. Çizilen işgal alanı kadastro ölçümü yerine geçmez.</p>
     </div>
-    <div class="card inset"><b>Fotoğraflar (en fazla 8)</b><label class="secondary file">Fotoğraf Çek / Seç<input id="photoInput" type="file" accept="image/*" capture="environment" multiple></label><div id="photos" class="photos"></div></div>
+    <div class="card inset smart-photo-box"><div class="section-title-row"><div><b>Akıllı Fotoğraf Kanıtı (en fazla 8)</b><p class="muted">Çekim türünü seçin. Tarih, mevcut GPS, yön ve basit kalite kontrolü fotoğraf meta verisine eklenir.</p></div></div><div id="photoGuide" class="photo-guide"></div><label>Fotoğraf türü<select id="photoTypeSelect"><option>Genel görünüm</option><option>İşgal alanı</option><option>Yapı</option><option>Sınır</option><option>Giriş</option><option>Diğer</option></select></label><label class="secondary file">Fotoğraf Çek / Seç<input id="photoInput" type="file" accept="image/*" capture="environment" multiple></label><div id="photos" class="photos"></div></div>
     <div class="card inset"><b>İmza</b><canvas id="sig" width="700" height="240"></canvas><button type="button" id="clearSig" class="ghost">İmzayı Temizle</button></div>
     <div class="sticky"><button type="button" id="saveDraft" class="secondary">Taslak Kaydet</button><button type="button" id="complete" class="primary">Tespiti Tamamla</button></div>
   </form>
 </section>
 </main>
+<div id="liveHud" class="live-hud" hidden>
+  <div><b id="liveHudTitle">Canlı Saha</b><span id="liveHudMeta">Hedef bekleniyor</span></div>
+  <div class="live-hud-actions"><button type="button" id="liveHudOpen" class="primary">Aç</button><button type="button" id="liveHudNext" class="secondary">Sonraki</button><button type="button" id="liveHudClose" class="ghost">×</button></div>
+</div>
+<div id="cameraArOverlay" class="camera-ar-overlay" hidden aria-label="Kamera yön görünümü">
+  <video id="cameraArVideo" class="camera-ar-video" autoplay muted playsinline></video>
+  <div class="camera-ar-shade"></div>
+  <div class="camera-ar-top">
+    <div><b>📷 Kamera Yön Görüşü</b><small id="cameraArStatus">Kamera hazırlanıyor…</small></div>
+    <button type="button" id="cameraArClose" class="primary">Kapat</button>
+  </div>
+  <div class="camera-ar-crosshair"><span></span><i></i></div>
+  <div id="cameraArLabels" class="camera-ar-labels"></div>
+  <div class="camera-ar-bottom">
+    <button type="button" id="cameraArOpen" class="primary" disabled>Seçili Parseli Aç</button>
+    <button type="button" id="cameraArNavigate" class="secondary" disabled>Parsele Git</button>
+    <span id="cameraArHint">Telefonu yavaşça sağa/sola çevirin.</span>
+  </div>
+  <div class="camera-ar-warning">Yönlendirme amaçlıdır. Kamera etiketi ve çizgileri kadastro/resmî sınır tespiti değildir.</div>
+</div>
 <dialog id="help"><h3>iPhone'a ekleme</h3><p>Bu uygulama HTTPS üzerinden Safari'de açılmalıdır. Safari → Paylaş → <b>Ana Ekrana Ekle</b>. İlk açılıştan sonra uygulama çevrimdışı kullanılabilir.</p><p><b>Önemli:</b> Uygulamayı silmeden veya Safari site verilerini temizlemeden önce “Cihaz Yedeği Al” ile yedek oluşturun.</p><button id="closeHelp" class="primary">Tamam</button></dialog>
 <div id="toast"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>

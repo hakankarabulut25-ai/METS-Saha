@@ -1,0 +1,7 @@
+METS Saha v0.15.1 — TKGM KML Uyumluluk Düzeltmesi
+
+- TKGM Parsel Sorgu'dan indirilen yeni KML biçimi desteklendi.
+- Türkçe ExtendedData alanları desteklendi: İl, İlçe, Mahalle, Ada, ParselNo, Alan, Nitelik.
+- Eski MEGSİS/TKGM alan adlarıyla geriye dönük uyumluluk korundu.
+- Ada/parsel bilgisi ExtendedData'da yoksa Placemark adından (örn. 101-ada-3-parsel) okunabilir.
+- Mahalle adındaki "M / Mahallesi" farkları eşleştirmede normalize edilir.

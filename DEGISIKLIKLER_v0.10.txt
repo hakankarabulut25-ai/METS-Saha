@@ -1,0 +1,12 @@
+METS Saha v0.10 – Baktığım Yer + Akıllı Rota
+
+- Telefonun baktığı yöndeki KML’li parselleri pusula/GPS ile anlık sıralayan “Baktığım Yer Hangi Parsel?” modu eklendi.
+- Görüş açısı 30/60/90 derece ve menzil 500 m / 1,2 km / 2 km seçilebilir.
+- En güçlü eşleşme büyük kartta, diğer adaylar yön ve mesafeleriyle gösterilir.
+- Tamamlanmamış parseller için 5 duraklık yakın-komşu saha rotası oluşturulur.
+- GPS doğruluğu yeterliyse parsel sınırına 100 m kala yaklaşma uyarısı ve KML sınırına girildiğinde ayrı uyarı üretir.
+- Titreşim API’si desteklenen cihazlarda yaklaşma uyarısına titreşim eşlik eder.
+- GPS doğruluğu 25 m’den kötüyse sınır-içi titreşim uyarısı verilmez; yanlış güven azaltılır.
+- v0.9 radar, giriş noktası, v0.8 değişim analizi, v0.7 işgal alanı ölçümü ve önceki özellikler korunur.
+
+Not: GPS/pusula/KML tabanlı yönlendirmeler resmi kadastro sınırı veya ölçümü değildir.

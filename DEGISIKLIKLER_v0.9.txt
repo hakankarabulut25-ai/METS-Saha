@@ -1,0 +1,13 @@
+METS SAHA v0.9 — AKILLI SAHA NAVİGASYONU
+Tarih: 15.09.2026
+
+- GPS + telefon pusulasıyla yakın tamamlanmamış parseller için radar görünümü eklendi.
+- Yakındaki KML'li tamamlanmamış parseller mesafe/yön sırasıyla listelenir.
+- Radar, telefon yönü değiştikçe hedefleri göreli konuma taşır.
+- "Sıradaki Parsele Git" en yakın tamamlanmamış parsele navigasyon başlatır.
+- Tam ekran mahalle haritasına Radar kısayolu eklendi.
+- Parsel için araç/yaya giriş noktası kaydetme eklendi.
+- Kayıtlı giriş noktası varsa "Parsele Git" önce bu noktayı kullanır.
+- Giriş noktası parselden 250 m'den uzaktaysa kullanıcı teyidi alınır.
+- iOS pusula izni yalnız kullanıcı düğmeye bastığında istenir.
+- Radar ve GPS resmi/kadastro sınır tespiti yerine geçmez; yönlendirme amaçlıdır.

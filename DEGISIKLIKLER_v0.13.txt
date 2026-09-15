@@ -1,0 +1,13 @@
+METS Saha v0.13 — Çevrimdışı Mahalle Paketi + Saha Hazırlık Merkezi
+
+- Saha Hazırlık Merkezi eklendi.
+- İlçe/mahalle bazında hazırlık puanı ve kontrol listesi.
+- Mahalle çevrimdışı hazırlık işareti ve hazırlık tarihi.
+- Seçili mahalleyi ayrı METS saha paketi olarak dışa aktarma.
+- Mahalle paketine taşınmaz geçmişinin eklenmesi (varsa).
+- Çevrimdışı self-test: IndexedDB, Service Worker, uygulama kabuğu, KML kapsamı.
+- İnternet yokken uydu altlığı yerine mevcut KML kroki davranışı korunur.
+- Uydu/harita karoları toplu önbelleğe alınmaz; hizmet kullanım koşulları ve veri şişmesini önlemek için bilinçli tasarım.
+- Service Worker v0.13 önbellek sürümü; uygulama yerel dosyaları önden cache edilir.
+- Leaflet kütüphane dosyaları çevrimiçi kullanıldıktan sonra cache edilebilir; harita tile'ları cache edilmez.
+- APP_VERSION önceki 0.12 kaynakta yanlışlıkla 0.11 kalmıştı; 0.13 olarak düzeltildi.

@@ -1,0 +1,8 @@
+METS Saha v0.16 Statik Test Özeti — 15.09.2026
+- app.js JavaScript sözdizimi: GEÇTİ (node --check)
+- HTML id tekrarı: YOK (161/161 benzersiz)
+- JS->HTML statik referans kontrolü: dinamik oluşturulan resumeLastBtn ve mevcut dinamik completionCheckBtn dışında eksik sabit referans yok
+- Service Worker önbellek sürümü: mets-saha-v0.16
+- Uygulama sürümü: 0.16
+- Paket ZIP bütünlük testi: oluşturma sonrası doğrulandı
+- Fiziksel iPhone GPS/pil/kamera davranışı: gerçek cihaz kabul testi gerekir

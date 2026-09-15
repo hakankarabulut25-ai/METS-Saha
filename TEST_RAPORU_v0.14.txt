@@ -1,0 +1,17 @@
+METS Saha v0.14 - TEST RAPORU
+Tarih: 15.09.2026
+
+Yapılan kontroller:
+1) JavaScript sözdizimi: node --check ile geçti.
+2) HTML kimlik kontrolü: 137 id, 137 benzersiz; mükerrer yok.
+3) JS -> HTML statik ekran referansları kontrol edildi. Dinamik oluşturulan completionCheckBtn dışında eksik statik ekran kimliği yok.
+4) Eski fotoğraf kayıtları için geriye uyumluluk: photoMeta yoksa mevcut fotoğraflar "Diğer" türüyle normalize ediliyor.
+5) Fotoğraf silme işleminde fotoğraf meta dizisinin aynı indeksle silinmesi sağlandı.
+6) Saha tamamlama kontrolü validate + GPS + fotoğraf + fotoğraf türleri + imza + işgal alanı kontrollerini birleştiriyor.
+7) KML hazırlık, çevrimdışı mahalle, radar, AR yön görünümü, akıllı rota, tarihçe ve işgal ölçümü kodları korunuyor.
+8) Service Worker önbellek anahtarı mets-saha-v0.14 olarak yenilendi.
+
+Notlar:
+- Fotoğraf kalite kontrolü yardımcı niteliktedir; düşük çözünürlüklü örnek üzerinden parlaklık ve yaklaşık keskinlik uyarısı üretir.
+- GPS/pusula ve kamera izinleri gerçek iPhone cihazında saha kabul testine tabidir.
+- Fotoğraf kanıt türleri idari/hukuki delil yeterliliği kararı yerine geçmez.

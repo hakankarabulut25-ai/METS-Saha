@@ -1,0 +1,11 @@
+METS Saha v0.12 — Kamera / AR Yön Görüşü
+
+- Arka kamera üzerinde yön tabanlı parsel etiketleri.
+- GPS + telefon pusulası + mevcut KML geometrisi birlikte kullanılır.
+- Görüş açısı ve menzil mevcut “Baktığım Yer” ayarlarıyla ortak çalışır.
+- Görüşteki en uygun parsel otomatik seçilir; kullanıcı başka etikete dokunabilir.
+- Kamera ekranından seçili tespiti açma veya navigasyona geçme.
+- GPS doğruluğu ve pusula yönü kamera ekranında sürekli görünür.
+- Kamera yalnız kullanıcı düğmeye bastığında açılır; video kaydı yapılmaz ve görüntü sunucuya gönderilmez.
+- AR etiketleri yönlendirme amaçlıdır; resmi/kadastro sınır tespiti değildir.
+- v0.11 Akıllı Saha Asistanı ve önceki sürüm özellikleri korunmuştur.

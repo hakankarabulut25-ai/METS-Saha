@@ -1,0 +1,16 @@
+METS Saha v0.6 - Saha Yönetimi ve Güvenlik
+
+- Mahalle ilerleme yüzdesi ve saha hazırlık puanı
+- Harita durum filtreleri
+- En yakın tamamlanmamış parsel (parsel sınırına gerçek mesafe)
+- GPS kalite göstergesi
+- Tekrar gidilecekler listesi ve nedenleri
+- Günlük saha özeti
+- Aktarılmamış kayıt alarmı
+- Eski saha paketi uyarısı
+- Tespit sonucuna göre dinamik form
+- Delil yeterliliği puanı
+- Saha -> Büro görev işaretleri
+- Tamamlama sırasında kritik eksik kontrolü
+
+Kararlı v0.5 paketi değiştirilmemiştir.

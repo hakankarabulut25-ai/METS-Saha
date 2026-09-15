@@ -1,0 +1,14 @@
+METS Saha v0.8 - Geçmiş ve Değişim Analizi
+15.09.2026
+
+- Her tamamlanan tespitte en fazla son 12 tamamlanmış saha kaydı için geçmiş özeti tutulur.
+- Son tamamlanmış tespit ile mevcut çalışma karşılaştırılır.
+- Tespit sonucu, kullanım amacı, kullanıcı/fuzuli şagil, kullanım alanı, başlangıç tarihi ve imza durumu değişiklikleri vurgulanır.
+- Haritada çizilen işgal alanının büyüme/küçülme farkı m² olarak gösterilir.
+- Önceki ve mevcut ilk saha fotoğrafı yan yana karşılaştırılır.
+- Geçmiş fotoğrafları depolamayı şişirmemek için küçük karşılaştırma kopyaları olarak saklanır.
+- Zaman çizelgesinde tespit tarihi, sonucu, işgal alanı ve fotoğraf sayısı görülür.
+- Sonuç JSON şeması v3 oldu ve history alanı masaüstüne taşınır.
+- Eski saha paketleri ve mevcut v0.7 kayıtlarıyla geriye dönük uyumluluk korunur.
+
+Not: Önceki tespit geçmişi yoksa sistem geçmiş uydurmaz; ilk tamamlamadan sonra tarihçe oluşmaya başlar.

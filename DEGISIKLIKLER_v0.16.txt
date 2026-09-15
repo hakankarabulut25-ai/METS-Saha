@@ -1,0 +1,17 @@
+METS Saha v0.16 — Akıllı Saha Yardımcıları
+Tarih: 15.09.2026
+
+Yeni özellikler
+- Süre bazlı Gün Planı: 1/2/3/4/6 saatlik saha süresine göre açık KML'li parseller için yaklaşık çalışma planı üretir.
+- “Buradayken Bak”: mevcut GPS'e 1,2 km içindeki tamamlanmamış Hazine taşınmazlarını listeler.
+- Yanlış parselde fotoğraf uyarısı: fotoğraf eklenirken kayıtlı GPS seçili KML sınırından anlamlı ölçüde uzaktaysa kullanıcıyı uyarır.
+- Saha veri kurtarma: tamamlanmamış son açık tespiti ana ekranda gösterir ve tek dokunuşla kaldığı yerden devam ettirir.
+- Pil koruma modu: canlı GPS/radar/mahalle takibinde daha düşük güç tüketimli konum ayarlarına geçer.
+- Battery Status API destekleniyorsa pil yüzdesi ve şarj durumu gösterilir; iOS paylaşmıyorsa bu durum açıkça belirtilir.
+
+Korunan özellikler
+- Canlı saha modu, KML hazırlık merkezi, çevrimdışı mahalle, radar/pusula, AR kamera, işgal alanı ölçümü, geçmiş/değişim analizi ve saha kanıt kontrolü korunmuştur.
+
+Not
+- Gün planı süreleri yaklaşık saha planlama tahminidir; resmi süre hesabı değildir.
+- QR ile masaüstü↔telefon doğrudan aktarım, iki taraflı yerel bağlantı gerektirdiği için bu sürüme yarım çözüm olarak eklenmemiştir; masaüstü eş sürümüyle birlikte ayrı geliştirilecektir.
