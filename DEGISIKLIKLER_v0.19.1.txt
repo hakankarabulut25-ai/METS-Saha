@@ -1,0 +1,8 @@
+METS Saha v0.19.1 — Tam Ekran Harita Düzeltmesi
+
+- v0.18 modern üst başlık ve alt menü, eski tam ekran kartının üzerinde kalıyordu; z-index ve görünürlük düzeltildi.
+- Tam ekran modunda üst başlık, alt mobil menü ve canlı HUD gizlenir.
+- Harita kartı iPhone/PWA görünüm alanını 100dvh / -webkit-fill-available ile kaplar.
+- Safe-area boşlukları korunur.
+- v0.19 toplu seçim ve toplu boş tespit özellikleri korunur.
+- Tam ekran açılırken kartın menü tarafından hidden kalması önlenir; çıkışta aktif menü görünümü geri yüklenir.
