@@ -3,20 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#1f4f46">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light only">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="METS Saha">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-<link rel="stylesheet" href="app.css?v=0.17.4">
+<link rel="stylesheet" href="app.css?v=0.18.0">
 <title>METS Saha</title>
 </head>
 <body>
 <header>
-  <div><b>METS Saha</b><small>v0.17.4 · Tam Kullanıcı Testi + Kararlılık</small></div>
-  <div class="head-actions"><span id="netBadge" class="net"></span><button id="installHelp">iPhone'a Ekle</button></div>
+  <div><b>METS Saha</b><small>v0.18.0 · Saha Odaklı Modern Arayüz</small></div>
+  <div class="head-actions"><span id="netBadge" class="net"></span><button type="button" id="sunModeBtn" class="field-mode-btn" title="Arazide yüksek kontrast">☀️ <span>Güneş</span></button><button type="button" id="wakeLockBtn" class="field-mode-btn" title="Ekranın uykuya geçmesini önle">🔆 <span>Açık Tut</span></button><button id="installHelp" class="install-mini">＋</button></div>
 </header>
 <main>
 <section id="home">
@@ -197,11 +198,17 @@
       <p class="muted map-note">Parsel sınırı masaüstü METS'teki KML geometrisinden çizilir. Uydu/harita altlığı ve telefon GPS'i yönlendirme amaçlıdır. Çizilen işgal alanı kadastro ölçümü yerine geçmez.</p>
     </div>
     <div class="card inset smart-photo-box"><div class="section-title-row"><div><b>Akıllı Fotoğraf Kanıtı (en fazla 8)</b><p class="muted">Çekim türünü seçin. Tarih, mevcut GPS, yön ve basit kalite kontrolü fotoğraf meta verisine eklenir.</p></div></div><div id="photoGuide" class="photo-guide"></div><label>Fotoğraf türü<select id="photoTypeSelect"><option>Genel görünüm</option><option>İşgal alanı</option><option>Yapı</option><option>Sınır</option><option>Giriş</option><option>Diğer</option></select></label><label class="secondary file">Fotoğraf Çek / Seç<input id="photoInput" type="file" accept="image/*" capture="environment" multiple></label><div id="photos" class="photos"></div></div>
-    <div class="card inset"><b>İmza</b><canvas id="sig" width="700" height="240"></canvas><button type="button" id="clearSig" class="ghost">İmzayı Temizle</button></div>
+    <div class="card inset signature-box"><b>İmza</b><canvas id="sig" width="700" height="240"></canvas><button type="button" id="clearSig" class="ghost">İmzayı Temizle</button></div>
     <div class="sticky"><button type="button" id="saveDraft" class="secondary">Taslak Kaydet</button><button type="button" id="complete" class="primary">Tespiti Tamamla</button></div>
   </form>
 </section>
 </main>
+<nav id="mobileNav" class="mobile-nav" aria-label="METS Saha ana menüsü">
+  <button type="button" data-home-tab="saha" class="active"><span>◎</span><b>Saha</b></button>
+  <button type="button" data-home-tab="map"><span>⌖</span><b>Harita</b></button>
+  <button type="button" data-home-tab="prep"><span>☑</span><b>Hazırlık</b></button>
+  <button type="button" data-home-tab="tools"><span>≡</span><b>Özet</b></button>
+</nav>
 <div id="liveHud" class="live-hud" hidden>
   <div><b id="liveHudTitle">Canlı Saha</b><span id="liveHudMeta">Hedef bekleniyor</span></div>
   <div class="live-hud-actions"><button type="button" id="liveHudOpen" class="primary">Aç</button><button type="button" id="liveHudNext" class="secondary">Sonraki</button><button type="button" id="liveHudClose" class="ghost">×</button></div>

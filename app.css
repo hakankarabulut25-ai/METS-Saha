@@ -121,3 +121,38 @@ body.live-mode-active #liveModeCard{outline:3px solid rgba(44,110,73,.2)}
 #cameraArOpen,#cameraArNavigate,.popup-open{touch-action:manipulation;pointer-events:auto}
 .leaflet-popup-content .popup-open{position:relative;z-index:1000}
 body.camera-ar-open{overflow:hidden}
+
+
+/* v0.18 — Saha odaklı modern arayüz */
+:root{color-scheme:light;--mets-green:#154f43;--mets-ink:#102a25;--mets-border:#c9d8d4;--mets-bg:#f3f7f6}
+html,body{min-height:100%;-webkit-text-size-adjust:100%;color-scheme:light}
+body{padding-bottom:82px;background:var(--mets-bg)}
+header{z-index:8500;padding:10px 12px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.head-actions{gap:5px}.head-actions button{padding:8px 9px;border-radius:11px;font-size:12px;min-height:38px}.install-mini{width:38px;font-size:20px!important;padding:5px!important}.field-mode-btn.active{background:#102a25;color:#fff;border-color:#102a25}.field-mode-btn span{display:inline}
+.mobile-nav{position:fixed;z-index:8200;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));height:64px;background:rgba(255,255,255,.97);border:1px solid #cbd8d5;border-radius:19px;box-shadow:0 8px 30px rgba(0,0,0,.18);display:grid;grid-template-columns:repeat(4,1fr);padding:5px;backdrop-filter:blur(12px)}
+.mobile-nav button{border:0;background:transparent;border-radius:14px;padding:4px;min-width:0;color:#536762;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-size:10px}.mobile-nav button span{font-size:22px;line-height:1}.mobile-nav button b{font-size:10px}.mobile-nav button.active{background:#e4f2ed;color:#123e35}
+#home .home-menu-item[hidden]{display:none!important}
+#editor:not([hidden])~* .mobile-nav{display:none}
+.editor-open .mobile-nav{display:none!important}.editor-open{padding-bottom:0}
+.collapsible-section{padding:0!important;overflow:hidden}.collapse-toggle{width:100%;border:0;border-radius:0;background:#f8fbfa;padding:14px 15px;display:flex;align-items:center;justify-content:space-between;color:#17312d;text-align:left;font-size:14px}.collapse-toggle .chev{font-size:18px;transition:.2s transform}.collapsible-section:not(.is-collapsed)>.collapse-toggle .chev{transform:rotate(180deg)}.collapsible-section.is-collapsed>*:not(.collapse-toggle){display:none!important}.collapsible-section:not(.is-collapsed)>*:not(.collapse-toggle){margin-left:14px;margin-right:14px}.collapsible-section:not(.is-collapsed)>*:last-child{margin-bottom:14px}
+
+/* Güneş modu: parlak arazide maksimum okunabilirlik */
+body.sun-mode{--mets-bg:#fff;background:#fff;color:#000}
+body.sun-mode header,body.sun-mode .card,body.sun-mode .mobile-nav,body.sun-mode .inset,body.sun-mode .mini-panel,body.sun-mode .photo-guide{background:#fff!important;color:#000!important;border-color:#4d4d4d!important;box-shadow:none!important}
+body.sun-mode .muted,body.sun-mode small{color:#202020!important;font-weight:600}
+body.sun-mode button,body.sun-mode .file{border:2px solid #111!important;color:#000;background:#fff;font-weight:800}
+body.sun-mode .primary,body.sun-mode .mobile-nav button.active{background:#003d30!important;color:#fff!important;border-color:#003d30!important}
+body.sun-mode .secondary{background:#e8f3ef!important;color:#000!important}
+body.sun-mode input,body.sun-mode select,body.sun-mode textarea{background:#fff!important;color:#000!important;border:2px solid #333!important}
+body.sun-mode .card{border-width:2px!important}
+body.sun-mode .chip{border:1px solid #222;background:#fff;color:#000}
+body.sun-mode .sticky{background:#fff!important;border-top:2px solid #111}
+body.sun-mode .net{border:1px solid #222;background:#fff!important;color:#000!important}
+body.sun-mode #toast{background:#000;color:#fff;border:2px solid #fff;font-size:15px;font-weight:800}
+body.sun-mode .neighborhood-map,body.sun-mode .parcel-map{outline:2px solid #111}
+
+@media(max-width:600px){
+  main{padding:10px 10px 18px}.card{border-radius:15px;padding:13px;margin-bottom:9px}header b{font-size:18px}header small{font-size:11px}.field-mode-btn span{display:none}
+  .section-title-row h2{font-size:18px;margin:0}.section-title-row p{margin-top:4px}.sticky{bottom:0;z-index:100;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+  #editor{padding-bottom:12px}#editor>#back{position:sticky;top:66px;z-index:90;background:#fff;border:1px solid #9fb4ae;box-shadow:0 2px 8px #0001}
+}

@@ -1,0 +1,12 @@
+METS Saha v0.18.0 — Saha Odaklı Modern Arayüz
+
+- Ana ekran 4 sekmeli modern alt menüye ayrıldı: Saha, Harita, Hazırlık, Özet.
+- Karmaşık uzun ana sayfa yerine yalnız seçilen işleve ait kartlar gösterilir.
+- Tespit ekranındaki ileri bölümler açılır/kapanır hale getirildi.
+- Güneş Modu eklendi: yüksek kontrast, beyaz zemin, koyu yazılar ve belirgin kontroller.
+- Ekranı Açık Tut eklendi (desteklenen iPhone/Safari sürümlerinde Screen Wake Lock).
+- GPS ve fotoğraf artık tespiti tamamlamak için zorunlu değildir; yalnızca uyarı olarak gösterilir.
+- GPS/fotoğraf olmadan Tespiti Tamamla kullanılabilir; diğer mantıksal zorunlu alanlar korunur.
+- v0.17.4 özelliklerinin tamamı korunur.
+
+Not: Web uygulaması iPhone ekranının donanımsal parlaklığını zorla yükseltemez. Güneş Modu okunabilirliği artırır; Ekranı Açık Tut otomatik uyku/kararmayı azaltır. iPhone ısınmaya bağlı parlaklık kısmasını sistem seviyesinde yine uygulayabilir.

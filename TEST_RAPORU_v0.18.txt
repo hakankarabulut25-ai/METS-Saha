@@ -1,0 +1,27 @@
+METS Saha v0.18.0 — KULLANICI / KARARLILIK TEST RAPORU
+Tarih: 17.09.2026
+
+Kontroller
+- JavaScript sözdizimi: GEÇTİ (node --check)
+- HTML kimlikleri: 164 / 164 benzersiz
+- Ana menü: 4 sekme (Saha / Harita / Hazırlık / Özet) çalıştı
+- Paket yokken açılış: Hazırlık sekmesi açılıyor
+- 104 taşınmazlık gerçek saha paketi yükleme: GEÇTİ
+- Paket yüklenince Saha sekmesine geçiş: GEÇTİ
+- Güneş Modu aç/kapat: GEÇTİ
+- Tespit ekranı: 7 ileri bölüm açılır/kapanır hale geldi
+- GPS ve fotoğraf olmadan tespit: ENGEL DEĞİL; uyarı ile tamamlanabiliyor
+- Boş-kullanılmıyor örneği, GPS/fotoğraf olmadan Tamamla: GEÇTİ
+- Tamamlama uyarısı GPS/fotoğrafı “isteğe bağlı” olarak gösteriyor
+- Tespit tamamlanınca ana ekrana dönüş: GEÇTİ
+- Dinamik kullanıcı akış testinde JavaScript pageerror: 0
+- Service Worker sürümü/cache adı: v0.18.0
+
+Ekran görünürlüğü
+- Güneş Modu: beyaz zemin, siyah/koyu metin, kalın çerçeve ve yüksek kontrastlı butonlar.
+- Ekranı Açık Tut: Screen Wake Lock API desteklenen tarayıcı/iPhone sürümlerinde etkinleşir.
+
+Fiziksel cihaz sınırı
+- Web/PWA uygulaması iPhone’un donanımsal ekran parlaklığını programatik olarak yükseltemez.
+- iPhone ısınma/termal koruma nedeniyle parlaklığı düşürürse uygulama bunu zorla geri açamaz.
+- Güneş Modu okunabilirliği artırır; Ekranı Açık Tut otomatik uyku/kararmayı azaltır.
