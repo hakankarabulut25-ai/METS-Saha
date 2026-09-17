@@ -156,3 +156,9 @@ body.sun-mode .neighborhood-map,body.sun-mode .parcel-map{outline:2px solid #111
   .section-title-row h2{font-size:18px;margin:0}.section-title-row p{margin-top:4px}.sticky{bottom:0;z-index:100;padding-bottom:max(8px,env(safe-area-inset-bottom))}
   #editor{padding-bottom:12px}#editor>#back{position:sticky;top:66px;z-index:90;background:#fff;border:1px solid #9fb4ae;box-shadow:0 2px 8px #0001}
 }
+
+
+/* v0.19 — tam ekran seçim / toplu saha işlemi */
+.full-map-bulk{display:grid;grid-template-columns:auto auto 1fr auto;gap:6px;align-items:center;padding:6px 2px 0}.full-map-bulk strong{font-size:12px;white-space:nowrap;padding:0 4px}.full-map-bulk button{min-height:42px;padding:7px 10px;border-radius:10px}.full-map-bulk #fullSelectModeBtn.active{background:#0869c7;color:#fff;border-color:#0869c7}.full-map-bulk .bulk-empty{background:#1c7c54;color:#fff;border-color:#1c7c54;font-weight:900}.full-map-bulk button:disabled{opacity:.42}.map-selection-mode .leaflet-container{cursor:crosshair}.map-selection-mode .full-map-title b:after{content:' · TOPLU SEÇİM';color:#0869c7;font-size:11px}.map-selection-mode .neighborhood-map{outline:3px solid #0869c7}
+@media(max-width:650px){.full-map-bulk{grid-template-columns:1fr auto}.full-map-bulk .bulk-empty{grid-column:1/-1;order:3}.full-map-bulk #fullSelectClearBtn{order:4}.full-map-bulk strong{text-align:right}}
+body.sun-mode .full-map-bulk #fullSelectModeBtn.active,body.sun-mode .full-map-bulk .bulk-empty{background:#000!important;color:#fff!important;border-color:#000!important}

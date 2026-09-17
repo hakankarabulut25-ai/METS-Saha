@@ -1,0 +1,11 @@
+METS Saha v0.19.0 — Yapısal Test Raporu
+
+1. JavaScript sözdizimi: node --check geçti.
+2. HTML kimlikleri: 169 adet, mükerrer yok.
+3. Yeni tam ekran seçim kontrolleri: mevcut.
+4. Tam ekran dönüş akışı: open -> captureFullMapReturn -> back/complete -> restoreFullMapReturn bağlantıları mevcut.
+5. Toplu boş işlem: tek kayıt döngüsünde tespitSonucu=Boş-kullanılmıyor, status=completed, bulkSource işaretlemesi ve tek save akışı mevcut.
+6. GPS/fotoğraf: toplu boş işleminde zorunlu değil; mevcut v0.18 isteğe bağlı mantığı korunuyor.
+7. Service Worker cache: v0.19.0.
+8. Gerçek saha paketi şema kontrolü: 104 taşınmaz, 60 KML geometrili kayıt okundu.
+9. Otomatik gerçek tarayıcı etkileşim testi: bu çalışma ortamındaki Chromium politikası localhost/file erişimini engellediği için yapılamadı. Fiziksel iPhone Safari kabul testi gereklidir.

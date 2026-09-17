@@ -1,5 +1,5 @@
-const C='mets-saha-v0.18.0';
-const CORE=['./','index.html','app.css?v=0.18.0','app.js?v=0.18.0','manifest.webmanifest','icon-192.png','icon-512.png'];
+const C='mets-saha-v0.19.0';
+const CORE=['./','index.html','app.css?v=0.19.0','app.js?v=0.19.0','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('mets-saha-')&&k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);const isTile=u.hostname.includes('arcgisonline.com')||u.hostname.includes('tile.openstreetmap.org');const isLeaflet=u.hostname==='unpkg.com';if(isTile){e.respondWith(fetch(e.request).catch(()=>new Response('',{status:503,statusText:'Offline map tiles unavailable'})));return;}if(isLeaflet){e.respondWith(fetch(e.request).then(r=>{const x=r.clone();caches.open(C).then(c=>c.put(e.request,x)).catch(()=>{});return r}).catch(()=>caches.match(e.request)));return;}const core=u.origin===self.location.origin; if(core){e.respondWith(fetch(e.request,{cache:'no-store'}).then(r=>{if(r&&r.ok){const x=r.clone();caches.open(C).then(c=>c.put(e.request,x)).catch(()=>{})}return r}).catch(()=>caches.match(e.request).then(r=>r||(e.request.mode==='navigate'?caches.match('./'):undefined))));}});

@@ -1,0 +1,10 @@
+METS Saha v0.19.0 — Tam Ekran Akış + Toplu Saha İşlemi
+
+- Tam ekran haritadan tespit açıldıktan ve kayıt/tamamlama yapıldıktan sonra aynı tam ekran haritaya geri dönülür.
+- Harita merkez/zoom konumu mümkün olduğunca korunur.
+- Tam ekran haritaya “Toplu Seç” modu eklendi. Parsellere dokunarak çoklu seçim yapılabilir.
+- Seçilen tamamlanmamış taşınmazlar tek işlemle “Boş-kullanılmıyor” olarak tamamlanabilir.
+- Toplu boş işleminde GPS ve fotoğraf zorunlu değildir.
+- Taslak ve KML kontrol kayıtları için toplu işlem öncesi açık uyarı/teyit gösterilir.
+- Toplu işlem tek kalıcı kayıt ve tek harita yenilemesiyle yapılır; performans için her parselde ayrı kayıt yapılmaz.
+- Tamamlanmış taşınmazlar toplu boş seçimine alınmaz.
